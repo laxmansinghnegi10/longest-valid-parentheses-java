@@ -1,17 +1,16 @@
+import java.util.Scanner;
 import java.util.Stack;
 
 public class LongestValidParentheses {
 
     public static int longestValidParentheses(String s) {
         Stack<Integer> stack = new Stack<>();
-        stack.push(-1); // Base index for calculating valid substring length
+        stack.push(-1);
 
         int maxLength = 0;
 
         for (int i = 0; i < s.length(); i++) {
-            char current = s.charAt(i);
-
-            if (current == '(') {
+            if (s.charAt(i) == '(') {
                 stack.push(i);
             } else {
                 stack.pop();
@@ -28,8 +27,14 @@ public class LongestValidParentheses {
     }
 
     public static void main(String[] args) {
-        System.out.println(longestValidParentheses("(()"));      // Output: 2
-        System.out.println(longestValidParentheses(")()())"));   // Output: 4
-        System.out.println(longestValidParentheses(""));         // Output: 0
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter parentheses string: ");
+        String input = scanner.nextLine();
+
+        System.out.println("Longest Valid Parentheses Length: "
+                + longestValidParentheses(input));
+
+        scanner.close();
     }
 }
